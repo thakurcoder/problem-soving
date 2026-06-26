@@ -1,0 +1,28 @@
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        
+        length = len(nums)
+        prefix = 1
+        postfix = 1
+        ans = nums[0]
+
+        for i in range(length):
+            
+            prefix *= nums[i]
+            postfix *= nums[length-1-i]
+            ans = max(ans,prefix,postfix)
+
+            # print(prefix,postfix,ans,i)
+
+            if prefix == 0:
+                prefix = 1
+            
+            if postfix == 0:
+                postfix = 1
+            
+            # ans = max(ans,prefix,postfix)
+        
+        return ans
+
+
+        
